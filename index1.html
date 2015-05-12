@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="themes/Lightbulb.min.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+  <!-- OUR STYLESHEET -->  
+  <link rel="stylesheet" type="text/css" href="Lightbulb Stylesheet.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+
+<script>
+
+/*$(document).ready(function() {
+
+$("#psubmit").click(function(){   // catch the form's submit event
+   var formData = $("#profilesubmit").serialize(); 
+   $.ajax({
+         type: "POST",
+         url: "../php/putuser.php",
+         cache: false,
+         data: formData,
+         success: onSuccess,
+		 dataType: 'json',
+         error: onError
+		 alert('Submission Successful!'); 
+         });
+		 
+		 return false;
+    });
+}); */
+
+</script>
+
+<!-- WELCOME PAGE -------------------------------------------------------------------------------->
+<div data-role="page" id="welcome">
+  <div data-role="header">
+    <h1></h1>
+  </div>
+ <h1><img src="lightbulblogo.gif" alt="Lightbulb: connecting ideas to opportunities" width="75%" height="75%"></h1>
+    <div data-role="main" class="ui-content" align="center">
+<h1>Lightbulb allows users to easily create, collaborate & rate ideas.</h1> 
+    <button class="ui-btn-a" data-inline="true"><a href=#profile><font color="#000000">Create a Profile</font></a></button>
+    <br><button class="ui-btn-a" data-inline="true"><a href="#myPopup" data-rel="popup"><font color="#000000">Log In</font></a></button>
+    <div data-role="popup" id="myPopup" class="ui-content">
+      <form method="post" action="../Lightbulb/demoform.asp">
+        <div>
+          <h3>Log In</h3>
+          <input type="text" name="email" id="email" placeholder="Email Address">
+          <input type="password" name="password" id="password" placeholder="Password">
+          <label for="log">Keep me logged in</label>
+          <input type="checkbox" name="login" id="log" value="1" data-mini="true">
+          <input type="submit" id="psubmit" data-inline="true" value="Log in">
+        </div>
+      </form>
+    </div>
+  <div data-role="main" class="ui-content">
+    <a href="#infoPopup" data-rel="popup"><h3>Click <u>here</u> to learn more about how Lightbulb works!</h3></a>
+    <div data-role="popup" id="infoPopup">
+      <p>Lightbulb allows users to brainstorm, publish & view ideas anonymously. By using the 'Explore' feature, users may provide feedback to innovators, indicating they think an idea has potential by swiping right or passing on an idea by swiping left.</p>
+    </div>
+  </div>
+    </div>
+  <div data-role="footer" data-position="fixed">
+    <h3>Created for Web & Mobile App Development, April 2015</h3>
+  </div>
+</div>
+
+
+<!-- PROFILE PAGE -------------------------------------------------------------------------------->
+<div data-role="page" id="profile">
+  <div data-role="header">
+    <h1></h1>
+  </div>
+ <h1><img src="lightbulblogo.gif" alt="Lightbulb: connecting ideas to opportunities" width="75%" height="75%"></h1>
+  <div data-role="main" class="ui-content" align="center">
+<h2>Tell us about yourself! <i>(Please separate multiple entries with commas.)</i></h2>
+  
+  <div id="profilepage" >
+    <form id="profilesubmit" action:"../www/php/putuser.php">
+    <input type="text" name="fname" id="fname" placeholder="First Name (ex. Jane)" data-clear-btn="true">
+    <input type="text" name="lname" id="lname" placeholder="Last Name (ex. Smith)" data-clear-btn="true">
+    <input type="text" name="education" id="education" placeholder="Education (ex. Duke University, NYU Stern School of Business)" data-clear-btn="true">
+    <input type="text" name="employment" id="employment" placeholder="Employment (ex. Wall Street Journal, Deloitte)" data-clear-btn="true">
+      <p>
+<h2>Are you a/an... <i>(Please check all that apply.)</i></h2>
+      <label for="innovator">Innovator, creating/posting ideas?</label>
+      <input type="checkbox" name="identity" id="innovator" value="innovator">
+      <label for="collaborator">Collaborator, helping an innovator build an idea?</label>
+      <input type="checkbox" name="identity" id="collaborator" value="collaborator">
+      <label for="mentor">Mentor, providing guidance to an innovator?</label>
+      <input type="checkbox" name="identity" id="mentor" value="mentor"> 
+      <label for="investor">Investor, providing financial support to an innovator? </label>
+      <input type="checkbox" name="identity" id="investor" value="investor"> 
+  </fieldset>
+ <h2>Please create a login & password:</i></h2>
+      <input type="text" name="email" id="email" placeholder="Email address" data-clear-btn="true">
+      <input type="password" name="password" id="password" placeholder="Select a password" data-clear-btn="true">
+ <h2>Thank you!</h2>
+     <input type="submit" value="Submit">
+  
+  <h3>By clicking submit, you agree to respect the intellectual property of fellow users and recognize that any infringement without consent may subject you to legal repercussions.</h3>   
+      </form>
+    </div>
+    
+    
+  </div>
+  <div data-role="footer" data-position="fixed">
+    <h1>Created for Web & Mobile App Development, April 2015</h1>
+  </div>
+</div>
+
+
+<!-- HOME PAGE -------------------------------------------------------------------------------->
+
+<div data-role="page" id="homepage">
+<div data-role="header">
+    <h1></h1>
+  </div>
+ <h1><img src="lightbulblogo.gif" alt="Lightbulb: connecting ideas to opportunities" width="75%" height="75%"></h1>
+   <div data-role="main" class="ui-content" align="center">
+ <h1>Your Profile</h1> 
+ <h5>GET PROFILE FIELDS HERE
+ <br>First Name
+ <br>Last Name
+ <br>Education
+ <br>Employment
+ <br>Identities</h5> 
+     <br><button class="ui-btn-a" data-inline="true" data-mini="true"><a href=#profile><font color="#000000">Update Your Profile</font></a></button>
+ <h1>Your Ideas</h1>  
+ <h5><div class="ui-grid-b">
+      <div class="ui-block-a"><span>GET IDEA1 NAME</span></div>
+      <div class="ui-block-b"><span><a href="#ideaID"><u>Edit</u></a> | <a href="#ideametrics"><u>Metrics</u></a></span></div>
+      <div class="ui-block-a"><span>GET IDEA2 NAME</span></div>
+      <div class="ui-block-b"><span><a href="#ideaID"><u>Edit</u></a> | <a href="#ideametrics"><u>Metrics</u></a></span></div>
+    </div></h5>
+     <br><button class="ui-btn-a" data-inline="true" data-mini="true"><a href=#idea><font color="#000000">Add an Idea</font></a></button>
+ <button class="ui-btn-a" data-inline="true" data-mini="true"><a href=#swipe><font color="#000000">Explore Ideas</font></a></button>
+ <div data-role="footer" data-position="fixed">
+    <h3>Created for Mobile App Development, April 2015</h3>
+  </div>
+  </div>
+  </div>
+
+
+<!-- IDEA SUBMISSION PAGE -------------------------------------------------------------------------------->
+<div data-role="page" id="idea">
+<div data-role="header">
+    <h1></h1>
+  </div>
+ <h1><img src="lightbulblogo.gif" alt="Lightbulb: connecting ideas to opportunities" width="75%" height="75%"></h1>
+  <div data-role="main" class="ui-content" align="center">
+    <form method="post" action="../Lightbulb/demoform.asp">
+    <label for="problem"><h2>What is the problem you are trying to solve?</h2></label><input type="text" name="problem" id="problem" placeholder="Problem (ex. Mildew builds up in toothbrush holder)" data-clear-btn="true">
+     <label for="idea"><h2>Please describe your idea in 160 characters or less.</h2></label><input type="text" name="idea" id="idea" placeholder="Idea (ex. Small sponge at bottom of toothbrush holder absorbs liquid & prevents mildew)" data-clear-btn="true">
+<h2>At what phase of development is your idea?<i>(Please check all that apply.)</i></h2>
+      <label for="ideaonly">Idea</label>
+      <input type="checkbox" name="ideaonly" id="ideaonly" value="ideaonly">
+      <label for="design">Design</label>
+      <input type="checkbox" name="design" id="design" value="design">
+      <label for="prototype">Prototype</label>
+      <input type="checkbox" name="prototype" id="prototype" value="prototype"> 
+      <label for="research">Market Research</label>
+      <input type="checkbox" name="research" id="research" value="research"> 
+      <label for="investment">Early-Stage Funding</label>
+      <input type="checkbox" name="investment" id="investment" value="investment"> 
+  </fieldset>
+ <h2>Use this section to list any thoughts or questions.<i>(This will not be published.)</i></h2>
+       <input type="text" name="thoughts" id="thoughts" placeholder="Thoughts or questions (ex. Is the sponge removable for cleaning?)" data-clear-btn="true">
+   <a href="#swipe"><input type="submit" value="Submit & Explore Ideas"></a>
+  <h3>Upon clicking submit, your idea will be visible to other Lightbulb users.</h3>   
+     </form>
+     <br>
+     <br>
+     <h3><u><a href="#homepage">Back to Profile</a></u></h3>
+<div data-role="footer" data-position="fixed">
+    <h3>Created for Mobile App Development, April 2015</h3>
+  </div>
+  </div>
+  </div>
+
+
+<!-- IDEA RATING / SWIPE PAGE -------------------------------------------------------------------------------->
+<div data-role="page" id="swipe">
+<div data-role="header">
+    <h1></h1>
+  </div>
+ <h1><img src="lightbulblogo.gif" alt="Lightbulb: connecting ideas to opportunities" width="75%" height="75%"></h1>
+ <h1>DIV HERE WITH FIELD FOR SWIPE THAT LOOKS LIKE THIS (this text will be deleted):
+<br><img src="http://websys3.stern.nyu.edu/websysS15GB/websysS15GB5/www/swipe.png" width="80%" height="80%">
+ <h1><img src="http://websys3.stern.nyu.edu/websysS15GB/websysS15GB5/www/thumbsup.png" width="10%" height="10%" style="float: left;">
+      <img src="http://websys3.stern.nyu.edu/websysS15GB/websysS15GB5/www/thumbsdown.png" width="10%" height="10%" style="float: right;"></h1>
+     <br>
+     <br>
+     <h3><u><a href="#homepage">Back to Profile</a></u></h3>
+<div data-role="footer" data-position="fixed">
+    <h3>Created for Mobile App Development, April 2015</h3>
+  </div>
+  </div>
+  </div>
+
+</body>
+</html>

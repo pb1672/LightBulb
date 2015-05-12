@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+ <link rel="stylesheet" href="swipe.css" />
+
+
+
+
+
+<script type="text/javascript">
+function ajaxObj( meth, url ) {
+	var x = new XMLHttpRequest();
+	x.open( meth, url, true );
+	x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	return x;
+}
+function ajaxReturn(x){
+	if(x.readyState == 4 && x.status == 200){
+	    return true;	
+	}
+}
+
+function _(x){
+
+	return document.getElementById(x);
+}
+
+function getFeeds(){
+	
+	//var q = user ;
+	
+	//alert("feeds");
+	
+		//_("loginbtn").style.display = "none";
+		_("container").innerHTML = 'loading feeds ...';
+		
+		var ajax = ajaxObj("POST", "feeds.php");
+        ajax.onreadystatechange = function() {
+	        if(ajaxReturn(ajax) == true) {
+	            if(ajax.responseText == "err"){
+					_("container").innerHTML = "No feeds to show.";
+				} else {
+					_("container").innerHTML = ajax.responseText;
+					addSwipe();
+				}
+	        }
+        }
+       // ajax.send("q="+q+"&m=all");
+		ajax.send();	
+}
+
+function unlike(postid)
+{
+	
+		
+	//alert(obj.innerHTML);
+	var q =postid ;
+	
+	
+	
+		var ajax = ajaxObj("POST", "unlike.php");
+        ajax.onreadystatechange = function() {
+	        if(ajaxReturn(ajax) == true) {
+	        	
+	        }
+        }
+         ajax.send("q="+q);
+}
+
+function like(postid)
+{
+	
+	
+	//alert(obj.innerHTML);
+	var q =postid ;
+	
+	
+	
+		var ajax = ajaxObj("POST", "like.php");
+        ajax.onreadystatechange = function() {
+	        if(ajaxReturn(ajax) == true) {
+	        
+	        }
+        }
+         ajax.send("q="+q);
+}
+</script>
+
+
+ <script type="text/javascript">
+
+ 
+ function addSwipe()
+ {
+ 	$(".buddy").on("swiperight",function(){
+      $(this).addClass('rotate-left').delay(700).fadeOut(1);
+      $('.buddy').find('.status').remove();
+      like($(this).attr("title"));
+      $(this).append('<div class="status like">Like!</div>');      
+      if ( $(this).is(':last-child') ) {
+        $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+       } else {
+          $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+       }
+    });  
+
+   $(".buddy").on("swipeleft",function(){
+    $(this).addClass('rotate-right').delay(700).fadeOut(1);
+    $('.buddy').find('.status').remove();
+    unlike($(this).attr("title"));
+    $(this).append('<div class="status dislike">Dislike!</div>');
+
+    if ( $(this).is(':last-child') ) {
+     $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+      alert('Na-na!');
+     } else {
+        $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+    } 
+  });
+ }
+ </script>
+</head>
+<body onload="getFeeds()">
+ 
+  <div id ="container">
+  </div>
+</body>
+</html>

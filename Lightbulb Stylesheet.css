@@ -1,0 +1,27 @@
+@font-face {
+    font-family: JosefinSlab;
+    src: url(../Fonts/JosefinSlab-SemiBold.ttf) !important;
+}
+ 
+.custom-btn {
+    width: 5px !important;
+}
+
+h1 {
+    text-align: center; font-family: JosefinSlab;
+} 
+h2 {
+    font-family: JosefinSlab; font-size: 20px; text-align: left;
+} 
+h3 {
+    font-family: JosefinSlab; font-size: 100%; text-align: center;
+}
+h4 {
+    text-align: left; font-family: JosefinSlab; font-size: 20px;
+}
+h5 {
+    font-family: JosefinSlab; font-size: 100%; text-align: left;
+}
+a:link {
+    color: #ffffff;  text-decoration: none;
+}
